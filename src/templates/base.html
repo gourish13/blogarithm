@@ -22,6 +22,16 @@
 
         </head>
         <body>
+                <div class="navbar-fixed">
+                  <nav>
+                    <div class="nav-wrapper">
+                            <a href="{{ url_for('index') }}" class="brand-logo">Blogarithm</a>
+                      <ul id="nav-mobile" class="right hide-on-med-and-down">
+                      </ul>
+                    </div>
+                  </nav>
+                </div>
+
                 {% block content %}
                         Replaceable Page Content
                 {% endblock %}
