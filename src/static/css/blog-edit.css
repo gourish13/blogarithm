@@ -5,25 +5,22 @@
 	
 }
 
-
-
 .content{ 
 
-margin : auto ; 
-width : 500px; 
+    margin : auto ; 
+    width : 100vw; 
 
 }
 
 input{
 	
-width:50vw ;	
-	
+    width:50vw ;	
 	
 }
 
-.input-field{ 
+/* .input-field{ */ 
 
-width : 100vw;
+/*     width : 100%; */
 
-}
+/* } */
 
