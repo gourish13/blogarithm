@@ -8,7 +8,7 @@ from flask import Flask
 def app_factory():
     app = Flask(__name__)
     app.config['SECRET_KEY'] = environ['SECRET']
-
+    app.config['TEMPLATES_AUTO_RELOAD'] = True
 
     from .views import (
             index,
