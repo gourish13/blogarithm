@@ -11,14 +11,20 @@ def app_factory():
     app.config['SECRET_KEY'] = environ['SECRET']
 
 
-    from .views import (index , blog_create , blog_update)
+    from .views import (
+            index,
+            blog_view , 
+            blog_create , 
+            blog_update
+    )
 
     app.add_url_rule('/', view_func=index)
-    
     # View functions for Create and update blog 
     app.add_url_rule('/blog-create' , view_func=blog_create) 
     app.add_url_rule('/blog-update/<title>' , view_func=blog_update) 
     
+    app.add_url_rule('/blog/<string:slug>', view_func=blog_view)
+
 
     
     return app

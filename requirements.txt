@@ -9,5 +9,5 @@ psycopg2==2.8.6
 psycopg2-binary==2.8.6
 pydal==20210215.1
 readline==6.2.4.1
-uWSGI==2.0.19.1
+waitress==2.0.0
 Werkzeug==1.0.1
