@@ -10,4 +10,4 @@ def index():
     return render_template('index.html')
 
 def blog_view(slug):
-    return render_template('blogview.html' , title=title , content=blogcontent)
+    return render_template('blogview.html' , title='title' , content='blogcontent')
