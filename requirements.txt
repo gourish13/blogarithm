@@ -5,5 +5,9 @@ greenlet==0.4.13
 itsdangerous==1.1.0
 Jinja2==2.11.3
 MarkupSafe==1.1.1
+psycopg2==2.8.6
+psycopg2-binary==2.8.6
+pydal==20210215.1
 readline==6.2.4.1
+uWSGI==2.0.19.1
 Werkzeug==1.0.1
