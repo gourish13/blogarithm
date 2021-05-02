@@ -1,0 +1,29 @@
+*{
+	padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+	
+}
+
+
+
+.content{ 
+
+margin : auto ; 
+width : 500px; 
+
+}
+
+input{
+	
+width:50vw ;	
+	
+	
+}
+
+.input-field{ 
+
+width : 100vw;
+
+}
+
