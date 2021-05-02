@@ -9,5 +9,8 @@ from flask import render_template
 def index():
     return render_template('index.html')
 
+
+# @desc     Blog View Page
+# @route    GET /blog/<string:slug>
 def blog_view(slug):
     return render_template('blogview.html' , title='title' , content='blogcontent')
