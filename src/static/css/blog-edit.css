@@ -5,7 +5,7 @@
 }
 
 body {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Pangolin', cursive;
 }
 
 .content{ 
@@ -15,7 +15,44 @@ body {
 
 input{
     width:50vw !important;	
+	border-bottom-color : #1eb124 !important;
+	margin-left : 5vw;
+	
 }
+
+.markdown{ 
+
+	margin-top : 2vw; 
+	border-bottom-color : #1eb124 !important;
+	border-bottom-width : 2vw !important;
+
+
+}
+
+#blog-title{
+	
+	font-size : 3vw;
+	
+}
+
+nav {
+    background-color: #13131f;
+    color: #e1dfed;
+}
+
+button{ 
+
+margin-left : 15vw ;  
+width : 70vw; 
+height : 5vh !important;
+font-weight : bold;
+font-size : 4vw !important;
+background-color:#1eb124 !important;
+font-family: 'Pangolin', cursive !important;
+
+}
+
+
 
 /* .input-field{ */ 
 
