@@ -21,15 +21,21 @@ def index():
 # @desc     Blog Create Page
 # @route    GET /blog-create
 def blog_create():
-    return render_template('blog-edit.html') 
-
+    if request.method == 'GET' :
+        return render_template('blog-edit.html')  
+    
+    blog_info = request.form 
 
 
 # @desc     Blog Update Page
 # @route    GET /blog-update/<string:slug>
 def blog_update(slug): 
-    return render_template('blog-edit.html' ,title='title' , content='blogcontent') 
-
+    if request.method == 'GET': 
+        return render_template('blog-edit.html' ,title='title' , content='blogcontent') 
+     
+    blog_info = request.form        #RETURN JSON TO CLIENT   
+        
+        
 
 
 # @desc     Blog View Page
