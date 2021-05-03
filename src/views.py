@@ -19,21 +19,21 @@ def index():
 
 
 # @desc     Blog Create Page
-# @route    GET /blog/<string:slug>
+# @route    GET /blog-create
 def blog_create():
     return render_template('blog-edit.html') 
 
 
 
 # @desc     Blog Update Page
-# @route    GET /blog-create
+# @route    GET /blog-update/<string:slug>
 def blog_update(slug): 
-    return render_template('blog-edit.html') 
+    return render_template('blog-edit.html' ,title='title' , content='blogcontent') 
 
 
 
 # @desc     Blog View Page
-# @route    GET /blog-update/<string:slug>
+# @route    GET /blog/<string:slug>
 def blog_view(slug):
     return render_template('blogview.html' , title='title' , content='blogcontent')
 
