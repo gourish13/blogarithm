@@ -7,24 +7,63 @@
 {% block stylesheets %}
 				{{ super() }}
 				<link rel="stylesheet"  href="/static/css/blog-edit.css">
+				<link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+				<link rel="preconnect" href="https://fonts.gstatic.com">
+				<link href="https://fonts.googleapis.com/css2?family=Pangolin&display=swap" rel="stylesheet">
+
 {% endblock %}
+
+
+{% block js_libs %}
+
+{{ super() }} 
+<script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+
+{% endblock %}
+
+{% block scripts %} 
+<script type="text/javascript">
+
+window.onload = function(){ 
+var simplemde = new SimpleMDE({autosave: {
+		enabled: true,
+		uniqueId: "MyUniqueID",
+		delay: 1000,
+	}, 
+	spellChecker: true , 
+	hideIcons: ["guide"] , 
+	forceSync: true , 
+	
+	renderingConfig: {
+		singleLineBreaks: false,
+		codeSyntaxHighlighting: true,
+	}});
+} 
+
+	
+</script>
+
+{% endblock %} 
+
+
+
+
 
 {% block content %}
 
 
 		 <div class="content"> 
-			<h2> POST YOUR BLOG </h2> 
+			<h2> PUBLISH YOUR BLOG </h2> 
 			
-			<form class="input-field">
-				<input placeholder="BLOG TITLE"  id="blog-title" type="text" class="validate">
+			<form class="input-field"  method="post" >
+				<input placeholder="BLOG TITLE"  id="blog-title" type="text" value="{{title}}" class="validate">
+				
+				<div class="markdown"> 
+				<textarea>{{content}}</textarea>
+				</div> 
+				<button type="button" class="waves-effect waves-light btn">PUBLISH</button>
 			</form>
+			
+		</div> 
    
-   
-        
-		
-		
-		
-		
-		
-</div> 
 {% endblock %}

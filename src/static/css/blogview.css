@@ -1,0 +1,31 @@
+#blogtitle{
+
+    margin-top: 5vw;
+    margin-left: 5vw;
+    margin-right: 5vw;
+    font-size: 3vw;
+
+}
+
+#blogcontent{
+
+    margin-left: 5vw;
+    margin-right: 5vw;
+
+}
+
+.comments{
+
+    margin-left: 5vw;
+    margin-right: 5vw;
+    margin-top: 5vw;
+
+}
+
+.comments textarea{
+
+    font-size: 1vw;
+    height: 6vh;
+    width: 75vw;
+
+}
