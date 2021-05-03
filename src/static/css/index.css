@@ -11,11 +11,18 @@ body {
 nav {
     background-color: #13131f;
     color: #e1dfed;
+    transition: all .5s ease-in-out;
 }
 
 nav.nav-hidden {
     opacity: 0;
     pointer-events: none;
+}
+
+nav.nav-transparent {
+    background: rgba(0, 0, 0, 0.5);
+    box-shadow: unset;
+
 }
 
 nav .nav-wrapper .brand-logo {
