@@ -22,12 +22,18 @@ nav.nav-hidden {
 nav.nav-transparent {
     background: rgba(0, 0, 0, 0.5);
     box-shadow: unset;
-
 }
 
 nav .nav-wrapper .brand-logo {
     margin-left: 10px;
 }
+
+nav .nav-wrapper .brand-logo .brand-img {
+    width: 5%;
+    height: 90%;
+    margin-top: 2%;
+}
+
 
 main {
     position: absolute;
