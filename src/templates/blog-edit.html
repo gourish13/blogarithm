@@ -9,8 +9,9 @@
 				<link rel="stylesheet"  href="/static/css/blog-edit.css">
 				<link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
 				<link rel="preconnect" href="https://fonts.gstatic.com">
-				<link href="https://fonts.googleapis.com/css2?family=Pangolin&display=swap" rel="stylesheet">
-
+				
+				<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet"> 
+				<link href="https://fonts.googleapis.com/css2?family=Krona+One&display=swap" rel="stylesheet">
 {% endblock %}
 
 
@@ -56,12 +57,12 @@ var simplemde = new SimpleMDE({autosave: {
 			<h2> PUBLISH YOUR BLOG </h2>
 			
 			<form class="input-field"  method="post" >
-				<input placeholder="BLOG TITLE"  id="blog-title" type="text" value="{{title}}" class="validate">
+				<input placeholder="BLOG TITLE"  name="blog-title"  id="blog-title" type="text" value="{{title}}" class="validate">
 				
 				<div class="markdown"> 
-				<textarea>{{content}}</textarea>
+				<textarea name="blog" >{{content}}</textarea>
 				</div> 
-				<button type="button" class="waves-effect waves-light btn">PUBLISH</button>
+				<button type="submit" class="waves-effect waves-light btn">PUBLISH</button>
 			</form>
 			
 		</div> 

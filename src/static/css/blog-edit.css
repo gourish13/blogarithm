@@ -5,8 +5,12 @@
 }
 
 body {
-    font-family: 'Pangolin', cursive;
+    font-family: 'Montserrat', sans-serif;
 }
+
+
+
+
 
 .content{ 
     margin : auto; 
@@ -18,6 +22,12 @@ input{
 	border-bottom-color : #1eb124 !important;
 	margin-left : 5vw;
 	
+}
+
+.brand-logo{ 
+
+margin-left : 10px;
+
 }
 
 .markdown{ 
@@ -48,7 +58,7 @@ height : 5vh !important;
 font-weight : bold;
 font-size : 4vw !important;
 background-color:#1eb124 !important;
-font-family: 'Pangolin', cursive !important;
+font-family: 'Krona One', sans-serif !important;
 
 }
 
