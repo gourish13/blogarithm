@@ -9,6 +9,13 @@
 {% endblock %}
 
 
+{% block scripts %}
+
+    <script src="../static/js/blogview.js"></script>
+
+{% endblock %}
+
+
 {% block title %}
         {{title}} | Blogarithm
 {% endblock %}
@@ -45,7 +52,11 @@
         <div class="comments">
             <h id="text">COMMENTS</h>
             <hr>
-            <textarea placeholder="Enter your COMMENTS here"></textarea> 
+            <textarea placeholder="Enter your COMMENTS here"></textarea>
+            <center><a id="commentsubmit" class="waves-effect waves-light btn-large">POST</a></center>
+        </div>
+
+        <div class="postedcomments">
         </div>
 
 {% endblock %}
