@@ -27,8 +27,9 @@ def blog_create():
     if request.method == 'GET' :
         return render_template('blog-edit.html')
     blog_info = dict(request.form)
-    blog_info['slug'] = slugify(request.form['title'])
+    blog_info['slug'] = slugify(request.form['blog-title'])
     return jsonify(blog_info)
+
 
 
 
@@ -38,9 +39,8 @@ def blog_create():
 def blog_update(slug):
     if request.method == 'GET':
         return render_template('blog-edit.html' ,title='title' , content='blogcontent')
-    blog_info = request.form        # return json to client   
+    blog_info = request.form
     return jsonify(blog_info)
-
 
 
 # @desc     Blog View Page

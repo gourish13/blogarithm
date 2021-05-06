@@ -12,19 +12,23 @@ EMAIL_ID, EMAIL_PWD = environ['EMAIL'].split()
 
 mail = dict()
 mail['otp'] = ['OTP for Email Verification',
+
                """
                 Hello , %s
                     Here is your OTP for e-mail verification : %s
                 Let your keys fly your imagination,
                 Regards , Blogarithm team.
+
                """
               ]
 mail['reset password'] = ['OTP for Password Reset',
                           """
+
                             Hello , %s
                                 Here is your OTP to reset your password : %s
                             Let your keys fly your imagination,
                             Regards , Blogarithm team.
+
                           """
                          ]
 
