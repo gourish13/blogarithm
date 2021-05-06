@@ -12,21 +12,35 @@ EMAIL_ID, EMAIL_PWD = environ['EMAIL'].split()
 
 mail = dict()
 mail['otp'] = ['OTP for Email Verification',
-               f"""
-               
-               
+
+               """
+                Hello , %s
+                    Here is your OTP for e-mail verification : %s
+                Let your keys fly your imagination,
+                Regards , Blogarithm team.
 
                """
               ]
 mail['reset password'] = ['OTP for Password Reset',
                           """
-                          
+
+                            Hello , %s
+                                Here is your OTP to reset your password : %s
+                            Let your keys fly your imagination,
+                            Regards , Blogarithm team.
 
                           """
                          ]
 
 mail['admin email'] = ['Mail from Admin@Blogarithm',
-                       f"""
+                       """
+                        Hello , %s
+                            It has come to our attention that your blog titled: %s
+                            contains abusive contents that voilate our terms.
+                            Kindly rearrange it within 7 days or we will be forced
+                            to delete your account from our platform.
+                        NO FURTHER NOTICE WILL BE PROVIDED
+                        Regards , Blogarithm team.
 
                        """
                       ]
@@ -53,6 +67,6 @@ def send_email(email_type, rec, **other):
     #Send Mail
     smtp.sendmail(EMAIL_ID, rec , msg.as_string())
 
-    print("Mail sent to %s" %rec)
+    print(f"Mail sent to {rec}")
 
     smtp.quit()
