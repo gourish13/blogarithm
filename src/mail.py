@@ -34,7 +34,7 @@ mail['admin email'] = ['Mail from Admin@Blogarithm',
                             It has come to our attention that your blog titled: %s
                             contains abusive contents that voilate our terms.
                             Kindly rearrange it within 7 days or we will be forced
-                            to delete your account from our platform.
+                            to delete your blog from our platform.
                         NO FURTHER NOTICE WILL BE PROVIDED
                         Regards , Blogarithm team.
 
@@ -56,7 +56,12 @@ def send_email(email_type, rec, **other):
 
     msg['To'] = rec
     
-    mail_content = MIMEText(mail[email_type][1], 'plain')
+    if email_type=="admin email":
+        content = mail[email_type][1] %(rec , others['title'])
+    else:
+        content = mail[email_type][1] %(rec , others['otp'])
+
+    mail_content = MIMEText(content, 'plain')
     
     msg.attach(mail_content)
 
