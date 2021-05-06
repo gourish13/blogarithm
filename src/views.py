@@ -50,3 +50,7 @@ def blog_view(slug):
 
 
 
+# @desc     Privacy Policy
+# @route    GET /privacy-policy
+def privacy_policy():
+    return render_template('privacy-policy.html')

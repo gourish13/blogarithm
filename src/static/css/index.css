@@ -20,7 +20,7 @@ nav.nav-hidden {
 }
 
 nav.nav-transparent {
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.2);
     box-shadow: unset;
 
 }
