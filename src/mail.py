@@ -36,9 +36,9 @@ mail['admin email'] = ['Mail from Admin@Blogarithm',
                        """
                         Hello , %s
                             It has come to our attention that your blog titled: %s
-                            contains abusive contents that voilate our terms.
+                            contains abusive contents that violate our terms.
                             Kindly rearrange it within 7 days or we will be forced
-                            to delete your account from our platform.
+                            to delete your blog from our platform.
                         NO FURTHER NOTICE WILL BE PROVIDED
                         Regards , Blogarithm team.
 

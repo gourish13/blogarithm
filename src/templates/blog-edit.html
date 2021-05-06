@@ -58,7 +58,15 @@ var simplemde = new SimpleMDE({autosave: {
 			
 			<form class="input-field" action="/blog-create"  method="post" >
 				<input placeholder="BLOG TITLE"  name="blog-title"  id="blog-title" type="text" value="{{title}}" class="validate" required>
-				
+				<div class="switch">
+					<label>
+					  <b>Public</b>
+					  <input type="checkbox" id="bswitch">
+					  <span class="lever"></span>
+					  <b>Private</b>
+					</label>
+				</div>
+
 				<div class="markdown"> 
 				<textarea name="blog" required>{{content}}</textarea>
 				</div> 
