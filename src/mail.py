@@ -20,6 +20,7 @@ Let your keys fly your imagination,
 Regards , Blogarithm team.
                """
               ]
+              
 mail['reset password'] = ['OTP for Password Reset',
                           """
 Hello , %s
@@ -28,9 +29,11 @@ Let your keys fly your imagination,
 Regards , Blogarithm team.
                           """
                          ]
+                         
 
 mail['admin email'] = ['Mail from admin@Blogarithm',
                        """
+
 Hello , %s
     It has come to our attention that your blog titled: %s
     contains abusive contents that voilate our terms.
@@ -38,6 +41,7 @@ Hello , %s
     to delete your blog from our platform.
 NO FURTHER NOTICE WILL BE PROVIDED
 Regards , Blogarithm team.
+
                        """
                       ]
 
