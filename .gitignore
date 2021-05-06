@@ -131,3 +131,5 @@ dmypy.json
 
 start
 start.ps1
+*.table
+tags
