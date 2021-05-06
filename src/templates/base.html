@@ -9,7 +9,7 @@
                                 Blogarithm
                         {% endblock %}
                 </title>
-        
+                <link rel="shortcut icon" type="images/png" href="/static/image/B-min.png">
                         
                 {% block stylesheets %}
                         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> 
@@ -25,16 +25,15 @@
 
         </head>
         <body>
-                <div class="navbar-fixed">
-                  <nav class="nav-hidden">
+                {% block navbar %}
+                  <nav>
                     <div class="nav-wrapper">
-							 
                             <a href="{{ url_for('index') }}" class="brand-logo">Blogarithm</a>
                       <ul id="nav-mobile" class="right hide-on-med-and-down">
                       </ul>
                     </div>
                   </nav>
-                </div>
+                {% endblock %}
 
                 {% block content %}
                         Replaceable Page Content

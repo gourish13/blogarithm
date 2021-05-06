@@ -8,7 +8,9 @@ from flask import (
     redirect,
     url_for,
     session,
+    jsonify,
 )
+from slugify import slugify
 
 
 # @desc     Home Page
@@ -20,29 +22,31 @@ def index():
 
 # @desc     Blog Create Page
 # @route    GET /blog-create
+# @route    POST /blog-create
 def blog_create():
     if request.method == 'GET' :
-        return render_template('blog-edit.html')  
-    
-    blog_info = request.form 
-    return blog_info 
+        return render_template('blog-edit.html')
+    blog_info = dict(request.form)
+    blog_info['slug'] = slugify(request.form['title'])
+    return jsonify(blog_info)
+
+
 
 
 # @desc     Blog Update Page
 # @route    GET /blog-update/<string:slug>
-def blog_update(slug): 
-    if request.method == 'GET': 
-        return render_template('blog-edit.html' ,title='title' , content='blogcontent') 
-     
-    #RETURN JSON TO CLIENT   
-       
-        
+# @route    POST /blog-update/<string:slug>
+def blog_update(slug):
+    if request.method == 'GET':
+        return render_template('blog-edit.html' ,title='title' , content='blogcontent')
+    blog_info = request.form
+    return jsonify(blog_info)
 
 
 # @desc     Blog View Page
 # @route    GET /blog/<string:slug>
 def blog_view(slug):
-    return render_template('blogview.html' , title='title' , content='blogcontent')
+    return render_template('blogview.html', title='title', content='blogcontent')
 
 
 
