@@ -56,11 +56,11 @@ var simplemde = new SimpleMDE({autosave: {
 		 <div class="content"> 
 			<h2> PUBLISH YOUR BLOG </h2>
 			
-			<form class="input-field"  method="post" >
-				<input placeholder="BLOG TITLE"  name="blog-title"  id="blog-title" type="text" value="{{title}}" class="validate">
+			<form class="input-field" action="/blog-create"  method="post" >
+				<input placeholder="BLOG TITLE"  name="blog-title"  id="blog-title" type="text" value="{{title}}" class="validate" required>
 				
 				<div class="markdown"> 
-				<textarea name="blog" >{{content}}</textarea>
+				<textarea name="blog" required>{{content}}</textarea>
 				</div> 
 				<button type="submit" class="waves-effect waves-light btn">PUBLISH</button>
 			</form>

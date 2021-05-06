@@ -25,6 +25,7 @@ def blog_create():
         return render_template('blog-edit.html')  
     
     blog_info = request.form 
+    return blog_info 
 
 
 # @desc     Blog Update Page
@@ -33,8 +34,8 @@ def blog_update(slug):
     if request.method == 'GET': 
         return render_template('blog-edit.html' ,title='title' , content='blogcontent') 
      
-    blog_info = request.form        #RETURN JSON TO CLIENT   
-        
+    #RETURN JSON TO CLIENT   
+       
         
 
 
