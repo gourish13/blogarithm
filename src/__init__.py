@@ -17,8 +17,14 @@ def app_factory():
             blog_create,
             blog_update,
             privacy_policy,
+
     )
+    
+    from .auth import (
+        auth
+     )
     app.add_url_rule('/', view_func=index)
+    app.add_url_rule('/auth' , view_func=auth)
     app.add_url_rule('/blog-create', view_func=blog_create, methods=['GET', 'POST'])
     app.add_url_rule('/blog-update/<string:slug>', view_func=blog_update, methods=['GET', 'POST'])
     app.add_url_rule('/blog/<string:slug>', view_func=blog_view)

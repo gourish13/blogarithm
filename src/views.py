@@ -19,6 +19,8 @@ def index():
     return render_template('index.html')
 
 
+def auth():
+    return render_template('auth.html')
 
 # @desc     Blog Create Page
 # @route    GET /blog-create
