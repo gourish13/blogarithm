@@ -34,9 +34,9 @@ def register():
 def login():
     email = request.form['email']
     password = request.form['password']
-    user = db(db.users.email==email & db.users.password==password).select(db.user.name , db.user.role)
+    user = db((db.users.email==email) & (db.users.password==password)).select(db.users.name , db.users.role)
     if not user:
-        session['username'] = user.name
-        session['role'] = user.role
-        return users.as_json
-    return ('USER DOES NOT EXIST' , 200)
+        return ('USER DOES NOT EXIST' , 200)
+    session['username'] = user[0].name
+    session['role'] = user[0].role
+    return user.as_json()
