@@ -27,9 +27,11 @@ def app_factory():
 # Auth Routes
     from .auth import (
         auth , 
-        register
+        register,
+        login
      )
     app.add_url_rule('/auth' , view_func=auth)
     app.add_url_rule('/auth/register' , view_func=register , methods=['POST'])
+    app.add_url_rule('/auth/login' , view_func=login , method=['POST'])
 
     return app

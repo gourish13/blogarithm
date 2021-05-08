@@ -31,4 +31,12 @@ def register():
     return ('DATABASE INSERTION COMPLETE' , 200)    #REDIRECT ROUTE 
     
     
-    
+def login():
+    email = request.form['email']
+    password = request.form['password']
+    user = db(db.users.email==email & db.users.password==password).select(db.user.name , db.user.role)
+    if not user:
+        session['username'] = user.name
+        session['role'] = user.role
+        return users.as_json
+    return ('USER DOES NOT EXIST' , 200)
