@@ -9,6 +9,4 @@ from flask import (
 
 
 def auth():
-    if request.method == 'GET' :
-        return render_template('auth.html')
-
+    return render_template('auth.html')
