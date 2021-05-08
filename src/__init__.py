@@ -32,6 +32,6 @@ def app_factory():
      )
     app.add_url_rule('/auth' , view_func=auth)
     app.add_url_rule('/auth/register' , view_func=register , methods=['POST'])
-    app.add_url_rule('/auth/login' , view_func=login , method=['POST'])
+    app.add_url_rule('/auth/login' , view_func=login , methods=['POST'])
 
     return app
