@@ -7,7 +7,7 @@ from pydal import DAL, Field
 
 DB_URI = environ['DB_URI']
 
-db = DAL(DB_URI, pool_size=5)
+db = DAL(DATABASE_URL, pool_size=5)
 
 db.define_table('users',
 	Field('name', type='string', required=True, notnull=True),
