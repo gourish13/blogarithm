@@ -41,3 +41,8 @@ def login():
     session['username'] = user.name
     session['role'] = user.role
     return user.as_json()
+
+def logout():
+    session.pop('username')
+    session.pop('role')
+    return redirect(url_for('index'))
