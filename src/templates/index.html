@@ -10,15 +10,9 @@
 {% endblock %}
 
 {% block navbar %}
-        <div class="navbar-fixed">
-          <nav class="nav-hidden">
-            <div class="nav-wrapper">
-                    <a href="{{ url_for('index') }}" class="brand-logo">Blogarithm</a>
-              <ul id="nav-mobile" class="right hide-on-med-and-down">
-              </ul>
-            </div>
-          </nav>
-        </div>
+    <div class="navbar-fixed">
+        {{ super() }}
+    </div>
 {% endblock %}
 
 {% block content %}
