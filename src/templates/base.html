@@ -13,6 +13,7 @@
                         
                 {% block stylesheets %}
                         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> 
+                         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
                         <link rel="preconnect" href="https://fonts.gstatic.com">
                         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet"> 
                 {% endblock %}
@@ -28,9 +29,30 @@
                 {% block navbar %}
                   <nav class="nav-hidden">
                     <div class="nav-wrapper">
-                            <a href="{{ url_for('index') }}" class="brand-logo">Blogarithm</a>
+                            <a href="/" class="brand-logo">Blogarithm</a>
                       <ul id="nav-mobile" class="right hide-on-med-and-down">
+                        {% if  session['username'] is defined %}
+                            <li><a href="#">Published Blogs</a></li>
+                                
+                            <li><a href="/blog-create">
+                                <i class="material-icons left">add</i> Publish Blog</a></li>
+                            <li>
+                                <a class="dropdown-trigger" data-target="dropdown1" href="#!">
+                                {{ session['username'] }}
+                                <i class="material-icons right">arrow_drop_down</i>
+                                </a>
+                            </li>
                       </ul>
+                      <ul id="dropdown1" class="dropdown-content">
+                          <li><a href="#">Profile</a></li>
+                          <li>
+                                <a href="/auth/logout">Logout</a>
+                            </li>
+                        </ul>
+                        {% else %}
+                            <li><a href="/auth">Login | Sign up</a></li>
+                      </ul>
+                        {% endif %}
                     </div>
                   </nav>
                 {% endblock %}
@@ -40,7 +62,14 @@
                 {% endblock %}
 
                 {% block scripts %}
-                        {# Custom defined javascript #}
+                    {% if session['username'] is defined %}
+                        <script type="text/javascript">
+                            document.addEventListener('DOMContentLoaded', function() {
+                                var elems = document.querySelectorAll('.dropdown-trigger');
+                                var instances = M.Dropdown.init(elems);
+                              });
+                        </script>
+                    {% endif %}
                 {% endblock %}
         </body>
 </html>
