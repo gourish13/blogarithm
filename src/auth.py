@@ -1,3 +1,8 @@
+"""
+Controllers for Authentication
+"""
+
+from werkzeug.security import generate_password_hash, check_password_hash
 from flask import (
     render_template,
     request,
@@ -6,37 +11,33 @@ from flask import (
     session,
     jsonify,
 )
-from .models import db
+from .models import (
+    new_user, 
+    get_user, 
+)
 
 def auth():
     return render_template('auth.html')
 
 def register():
-    reg_data = request.form
-    name = reg_data['name'] 
-    email = reg_data['email']
-    password = reg_data['password']
-    
-    
-    #INSERTION TO DATABASE 
-    try : 
-        db.users.insert(name = name , email = email , password = password)
-        db.commit()
-        session['username'] = name
-        session['role'] = 'user'
-    except Exception as e:                   #DATABASE EXCEPTION HANDLING
-        print(e)
-        return ('ERROR in insertion' , 500)
-    
+    name = request.form['name'] 
+    email = request.form['email']
+    password = generate_password_hash(request.form['password'], 'sha256')
+    if not new_user(name, email, password):
+        return ('User alresdy registered', 200)
+    session['username'] = name
+    session['role'] = 'user'    
     return ('DATABASE INSERTION COMPLETE' , 200)    #REDIRECT ROUTE 
     
     
 def login():
     email = request.form['email']
     password = request.form['password']
-    user = db((db.users.email==email) & (db.users.password==password)).select(db.users.name , db.users.role)
+    user = get_user(email)
     if not user:
-        return ('USER DOES NOT EXIST' , 200)
-    session['username'] = user[0].name
-    session['role'] = user[0].role
+        return ('Email or Password incorrect', 200)
+    if not check_password_hash(user.password, password):
+        return ('Email or Password incorrect', 200)
+    session['username'] = user.name
+    session['role'] = user.role
     return user.as_json()

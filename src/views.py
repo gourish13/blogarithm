@@ -22,7 +22,7 @@ def index():
 def auth():
     return render_template('auth.html')
 
-# @desc     Blog Create Page
+# @desc     Blog Create
 # @route    GET /blog-create
 # @route    POST /blog-create
 def blog_create():
@@ -35,7 +35,7 @@ def blog_create():
 
 
 
-# @desc     Blog Update Page
+# @desc     Blog Update
 # @route    GET /blog-update/<string:slug>
 # @route    POST /blog-update/<string:slug>
 def blog_update(slug):
