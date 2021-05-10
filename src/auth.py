@@ -18,6 +18,18 @@ from .models import (
     is_registered
 )
 
+from .mail import (
+
+    send_email,
+
+)
+
+from .otpgen import (
+
+    genkey
+
+)
+
 def auth():
     return render_template('auth.html')
 
@@ -52,7 +64,8 @@ def logout():
 def mailcheck():
     email = request.args['email']
     if not is_registered(email):
-        return jsonify(dict(status='is-success'))
+        otp = genkey()
+        send_email('otp' , email , otp=otp)
+        return jsonify(dict(otp = generate_password_hash(otp)))
     else:
         return jsonify(dict(status='is-danger'))
-
