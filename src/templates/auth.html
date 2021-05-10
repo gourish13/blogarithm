@@ -19,7 +19,7 @@
 {% endblock %} 
 
 {% block navbar %}
-
+	{# no navbar #}
 {% endblock %} 
 
 				
@@ -133,12 +133,10 @@
 
 {% block scripts %}
 <script src="/static/js/auth.js" type="text/javascript" ></script>
-
 <script type="text/javascript">
-		
+	(function() {	
 		document.getElementsByClassName("login")[0].style.display="block";
 		document.getElementsByClassName("signup")[0].style.display="None";
-
+	})();
 </script>
-
 {% endblock %}
