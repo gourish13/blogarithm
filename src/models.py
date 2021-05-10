@@ -65,6 +65,7 @@ def new_user(name, email, password, superuser = False):
     return True
 
 
+
 # Get user data by email
 def get_user(email):
     user = db(db.users.email == email).select(

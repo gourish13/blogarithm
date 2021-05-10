@@ -11,6 +11,7 @@ from flask import (
     session,
     jsonify,
 )
+
 from .models import (
     new_user, 
     get_user, 
@@ -41,3 +42,4 @@ def login():
     session['username'] = user.name
     session['role'] = user.role
     return user.as_json()
+    
