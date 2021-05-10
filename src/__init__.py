@@ -29,11 +29,13 @@ def app_factory():
         auth , 
         register,
         login,
-        logout
+        logout,
+        is_registered
      )
     app.add_url_rule('/auth' , view_func=auth)
     app.add_url_rule('/auth/register' , view_func=register , methods=['POST'])
     app.add_url_rule('/auth/login' , view_func=login , methods=['POST'])
     app.add_url_rule('/auth/logout' , view_func=logout)
+    app.add_url_rule('/auth/isregistered' , view_func=is_registered)
 
     return app
