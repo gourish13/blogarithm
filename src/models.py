@@ -72,3 +72,7 @@ def get_user(email):
                     db.users.name, db.users.password, db.users.role
                 )
     return user if not user else user[0]
+
+# Checking Registration
+def is_registered(email):
+    return db(db.users.email == email).count()

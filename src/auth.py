@@ -15,6 +15,7 @@ from flask import (
 from .models import (
     new_user, 
     get_user, 
+    is_registered
 )
 
 def auth():
@@ -42,4 +43,16 @@ def login():
     session['username'] = user.name
     session['role'] = user.role
     return user.as_json()
-    
+
+def logout():
+    session.pop('username')
+    session.pop('role')
+    return redirect(url_for('index'))
+
+def mailcheck():
+    email = request.args['email']
+    if not is_registered(email):
+        return jsonify(dict(status='is-success'))
+    else:
+        return jsonify(dict(status='is-danger'))
+
