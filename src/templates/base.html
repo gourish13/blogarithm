@@ -26,6 +26,17 @@
 
         </head>
         <body>
+                {% block scripts %}
+                    {% if session['username'] is defined %}
+                        <script type="text/javascript">
+                            document.addEventListener('DOMContentLoaded', function() {
+                                var elems = document.querySelectorAll('.dropdown-trigger');
+                                var instances = M.Dropdown.init(elems);
+                              });
+                        </script>
+                    {% endif %}
+                {% endblock %}
+                
                 {% block navbar %}
                   <nav class="nav-hidden">
                     <div class="nav-wrapper">
@@ -61,15 +72,5 @@
                         Replaceable Page Content
                 {% endblock %}
 
-                {% block scripts %}
-                    {% if session['username'] is defined %}
-                        <script type="text/javascript">
-                            document.addEventListener('DOMContentLoaded', function() {
-                                var elems = document.querySelectorAll('.dropdown-trigger');
-                                var instances = M.Dropdown.init(elems);
-                              });
-                        </script>
-                    {% endif %}
-                {% endblock %}
         </body>
 </html>

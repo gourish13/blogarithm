@@ -1,4 +1,4 @@
-function next(){
+function showNext(){
 	document.getElementsByClassName("page-1")[0].style.display="None";
 	document.getElementsByClassName("page-2")[0].style.display="block";
 }

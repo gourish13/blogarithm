@@ -1,4 +1,4 @@
-*{
+* {
 	
 	
 	padding : 0;
@@ -9,9 +9,10 @@
 	
 }
 
-i{
+i {
 	
 	margin-right : 10vw;
+	cursor: pointer;
 	
 }
 .page-1{
