@@ -12,7 +12,7 @@ from flask import (
     jsonify,
 )
 
-from .models import (
+from .user_models import (
     new_user, 
     get_user, 
     is_registered
@@ -30,8 +30,14 @@ from .otpgen import (
 
 )
 
+
+# Authentication Page
 def auth():
-    return render_template('auth.html')
+    next = request.args['next'] if 'next' in request.args else '/'
+    if session['username']:
+        return redirect(url_for(next))
+    return render_template('auth.html', next=next)
+
 
 def register():
     name = request.form['name'] 

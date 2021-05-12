@@ -1,4 +1,4 @@
-var tabs = document.getElementsByClassName('tabby');
+const tabs = document.getElementsByClassName('tabby');
 
 function showNext(){
 	document.getElementsByClassName("page-1")[0].style.display="None";
