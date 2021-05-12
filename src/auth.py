@@ -35,7 +35,7 @@ from .otpgen import (
 def auth():
     next = request.args['next'] if 'next' in request.args else '/'
     if session['username']:
-        return redirect(url_for(next))
+        return redirect(next)
     return render_template('auth.html', next=next)
 
 
