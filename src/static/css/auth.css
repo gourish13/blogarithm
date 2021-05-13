@@ -4,10 +4,15 @@
 	box-sizing : border-box; 
 }
 
+input {
+	margin-bottom: 5%;
+}
+
 i {
-	margin-right : 10vw;
+	margin : 5.5vw;
 	cursor: pointer;
 }
+
 .page-1 {
 	display : block;
 }
