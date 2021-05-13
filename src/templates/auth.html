@@ -37,19 +37,18 @@
 							  </ul>
 						</div>
 						<div class="signup" >
-						<!-- REGISTRATION FIELDS  -->  
 						<form>
 							<div class="page-1">
 								<div class="field">
 								  
 								  <div class="control">
-									<input class="input" type="email" placeholder="Email Id.">
+									<input required class="input" type="email" placeholder="your-email-id@email">
 								  </div>
 								</div>
 
 								<div class="field">
 									<div class="control">
-										<input class="input" type="text" placeholder="User Name">
+										<input required class="input" type="text" placeholder="Your Name">
 									</div>
 								</div>
 								
@@ -58,23 +57,22 @@
 								<div class="field">
 								  
 								  <div class="control">
-									<input class="input" type="password" placeholder="Password">
+									<input required class="input" type="password" placeholder="Password">
 								  </div>
 								</div>
 								
 								<div class="field">
 								  
 								  <div class="control">
-									<input class="input" type="password" placeholder="Confirm Password">
+									<input required class="input" type="password" placeholder="Confirm Password">
 								  </div>
 								</div>
 							
 							
 							
-								<button type="button" class="button is-success is-medium" onclick="showNext()"> NEXT </button>
+								<button type="button" class="button is-primary is-medium" onclick="getOTP(this)"> Next </button>
 							</div>
 						
-						<!-- OTP VERIFICATION --> 
 							<div class="page-2">
 								<div class="field" >
 									  
@@ -85,9 +83,9 @@
 								<input type="hidden" name="hashed-otp">
 								
 								
-								<button class="button is-success is-medium"> SUBMIT</button>
+								<button class="button is-success is-medium"> Submit</button>
 								
-								<button class="button is-success is-medium"> RESEND OTP</button>
+								<button class="button is-success is-medium"> Resend otp</button>
 							</div>
 						</form>
 						
@@ -97,7 +95,6 @@
 						
 						
 						<div class="login">
-						<!-- LOGIN FIELDS --> 
 						<form>
 							WELCOME LOGIN AREA
 							<input type="hidden" name="next" value="{{next}}">
