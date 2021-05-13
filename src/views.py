@@ -33,11 +33,11 @@ def blog_create():
     blog_info['user'] = session['username']
     if blog_info['private'] == 'true' :
         _id = new_blog(blog_info['blog-title'] , blog_info['content'] , blog_info['user'] , blog_info['slug'] ,private = True)
-    else :
+    else:
         _id = new_blog(blog_info['blog-title'] , blog_info['content'] , blog_info['user'] , blog_info['slug'])
     
     
-    view_url  = '/blog/' + blog_info['slug'] + '/' str(_id)
+    view_url  = '/blog/' + blog_info['slug'] + '/' + str(_id)
     return redirect(view_url)
     
     
@@ -52,8 +52,7 @@ def blog_update(slug):
     if 'username' in session:
         if request.method == 'GET':
             return render_template('blog-edit.html' ,title='title' , content='blogcontent')
-        blog_info = request.form
-        return jsonify(blog_info)
+        return jsonify(request.form)
     url = '/auth?next=blog-update/'+slug 
     return redirect(url)
 
