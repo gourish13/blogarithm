@@ -1,56 +1,45 @@
 * {
-	
-	
 	padding : 0;
 	margin : 0;
 	box-sizing : border-box; 
-	
-	
-	
 }
 
 i {
-	
 	margin-right : 10vw;
 	cursor: pointer;
-	
 }
-.page-1{
-	
+.page-1 {
 	display : block;
-	
-	
 }
 
-
-.page-2{
-	
+.page-2 {
 	display : None ;
-	
-	
 }
 
-.main-area{
-	
+.main-area {
 	margin:auto; 
 	width : 50vw;
 	height : 70vh;
-	
-	
 }
 
-.icon-area{
-	
+.icon-area {
 	margin : auto;
 	width : 50vw;
 	height : 30vw;
-	
 }
 
-main{
-	
+main {
 	 width : 100vw;
 	 height : 100vh;
-
 }
 
+.loader {
+	border-radius: 100px;
+	height: 60px;
+	width: 100px;
+}
+
+
+.input.exists {
+	background-color: rgba(255, 100, 50, 0.4);
+}
