@@ -33,16 +33,24 @@
                                 var elems = document.querySelectorAll('.dropdown-trigger');
                                 var instances = M.Dropdown.init(elems);
                               });
+                            document.addEventListener('DOMContentLoaded', function() {
+                                var elems = document.querySelectorAll('.sidenav');
+                                var instances = M.Sidenav.init(elems);
+                              });
                         </script>
                     {% endif %}
                 {% endblock %}
                 
                 {% block navbar %}
+
                   <nav class="nav-hidden">
                     <div class="nav-wrapper">
                             <a href="/" class="brand-logo">Blogarithm</a>
+                            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                       <ul id="nav-mobile" class="right hide-on-med-and-down">
+
                         {% if  session['username'] is defined %}
+
                             <li><a href="#">Published Blogs</a></li>
                                 
                             <li><a href="/blog-create">
@@ -54,18 +62,31 @@
                                 </a>
                             </li>
                       </ul>
+                        <!-- Dropdown -->
                       <ul id="dropdown1" class="dropdown-content">
                           <li><a href="#">Profile</a></li>
                           <li>
                                 <a href="/auth/logout">Logout</a>
                             </li>
                         </ul>
+                        <!-- Hamburger -->
+                          <ul class="sidenav" id="mobile-demo">
+                            <li><a href="#">Published Blogs</a></li>
+                            <li><a href="/blog-create">
+                                <i class="material-icons left">add</i> Publish Blog</a></li>
+                            <li>
+                                <a class="dropdown-trigger" data-target="dropdown1" href="#!">
+                                {{ session['username'] }}
+                                <i class="material-icons right">arrow_drop_down</i></a>
+                          </ul>
+
                         {% else %}
                             <li><a href="/auth">Login | Sign up</a></li>
                       </ul>
                         {% endif %}
                     </div>
                   </nav>
+
                 {% endblock %}
 
                 {% block content %}
