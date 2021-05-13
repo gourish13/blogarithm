@@ -24,17 +24,23 @@ def index():
 # @route    GET /blog-create
 # @route    POST /blog-create
 def blog_create():
-    if 'username' in session:
-        if request.method == 'GET' :
-            return render_template('blog-edit.html')
-        blog_info = dict(request.form)
-        blog_info['slug'] = slugify(request.form['blog-title'])
-        blog_info['user'] = session['username']
-        _id = new_blog(blog_info['blog-title'] , blog_info['content'] , blog_info['user'] , blog_info['slug'])
-        view_url  = '/blog/' + blog_info['slug'] + str(_id)
-        return redirect(view_url)
     
-    return redirect('/auth?next=blog-create')
+    if request.method == 'GET' :
+        return render_template('blog-edit.html')
+    
+    blog_info = dict(request.form)
+    blog_info['slug'] = slugify(request.form['blog-title'])
+    blog_info['user'] = session['username']
+    if blog_info['private'] == 'true' :
+        _id = new_blog(blog_info['blog-title'] , blog_info['content'] , blog_info['user'] , blog_info['slug'] ,private = True)
+    else :
+        _id = new_blog(blog_info['blog-title'] , blog_info['content'] , blog_info['user'] , blog_info['slug'])
+    
+    
+    view_url  = '/blog/' + blog_info['slug'] + '/' str(_id)
+    return redirect(view_url)
+    
+    
 
 
 
@@ -48,7 +54,7 @@ def blog_update(slug):
             return render_template('blog-edit.html' ,title='title' , content='blogcontent')
         blog_info = request.form
         return jsonify(blog_info)
-    url = '/auth?next=/blog-update/?next=blog-update/'+slug 
+    url = '/auth?next=blog-update/'+slug 
     return redirect(url)
 
 

@@ -23,11 +23,16 @@
 {% endblock %}
 
 {% block scripts %} 
-{{ super() }}
+	{{ super() }}
+<script src="/static/js/blog-edit.js" type="text/javascript"></script>
 <script type="text/javascript">
 
+var simplemde; 
+
 window.onload = function(){ 
-var simplemde = new SimpleMDE({autosave: {
+	simplemde = new SimpleMDE({
+	element : document.getElementById("blog"),
+	autosave: {
 		enabled: true,
 		uniqueId: "MyUniqueID",
 		delay: 1000,
@@ -57,20 +62,26 @@ var simplemde = new SimpleMDE({autosave: {
 		 <div class="content"> 
 			<h2> PUBLISH YOUR BLOG </h2>
 			
-			<form class="input-field" action="/blog-create"  method="post" >
+			<form class="input-field" id="myform" action="/blog-create" method="post">
 				<input placeholder="BLOG TITLE"  name="blog-title"  id="blog-title" type="text" value="{{title}}" class="validate" required>
 				<div class="switch">
 					<label>
-					  <b>Private</b>
-					  <input type="checkbox" id="bswitch">
+					  <b>Public</b>
+					  <input name="bswitch" type="checkbox" id="bswitch">
 					  <span class="lever"></span>
+					  <b>Public</b>
+					  
 					</label>
 				</div>
+				<input name="private" id="private" value="true" type="hidden">
+				<p id="error" class="error"></p>
 
 				<div class="markdown"> 
-				<textarea name="blog" required>{{content}}</textarea>
+				<textarea name="blog" id="blog" required>{{content}}</textarea>
 				</div> 
-				<button type="submit" class="waves-effect waves-light btn">PUBLISH</button>
+				
+				<button type="button" class="waves-effect waves-light btn" onclick="createblog()" >PUBLISH</button>
+				
 			</form>
 			
 		</div> 
