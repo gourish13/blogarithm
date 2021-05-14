@@ -11,69 +11,64 @@ from flask import (
     session,
     jsonify,
 )
-
 from .user_models import (
     new_user, 
     get_user, 
     is_registered
 )
-
-from .mail import (
-
-    send_email,
-
-)
-
-from .otpgen import (
-
-    genkey
-
-)
+from .mail import send_email
+from .otpgen import genkey
 
 
 # Authentication Page
 def auth():
-    next = request.args['next'] if 'next' in request.args else '/'
+    next_url = '/' + (request.args['next'] if 'next' in request.args else '')
     if 'username' in session:
-        return redirect(next)
-    return render_template('auth.html', next=next)
-
-    
+        return redirect(next_url)
+    return render_template('auth.html', next=next_url)
 
 
 def register():
     name = request.form['name'] 
     email = request.form['email']
-    _next = request.form['next'] 
+    next_url = request.form['next'] 
     password = generate_password_hash(request.form['password'], 'sha256')
-    
     hashed_otp = request.form['hashed-otp']
     otp = request.form['otp']
+
+    if not check_password_hash(otp, hashed_otp):
+        message = f"<b>Unable to register, OTP does not match.<a href='/auth?next={next_url}'><i>Try Registering Again</i></a> .</b>"
+        return (message, 403)
     
-    if not new_user(name, email, password):
-        return ('User alresdy registered', 200)
+    uid = new_user(name, email, password):
     session['username'] = name
     session['role'] = 'user'    
-    return redirect(_next)  #REDIRECT ROUTE 
+    session['uid'] = uid
+    return redirect(next_url)  
     
     
 def login():
     email = request.form['email']
     password = request.form['password']
-    _next = request.form['next']
+    next_url= request.form['next']
     user = get_user(email)
+    message = f"<b>Email or Password incorrect. <a href='/auth?next={next_url}'><i>Try again</i> .</b>"
     if not user:
-        return ('Email or Password incorrect', 200)
+        return (message, 401)
     if not check_password_hash(user.password, password):
-        return ('Email or Password incorrect', 200)
+        return (message, 401)
     session['username'] = user.name
     session['role'] = user.role
-    return redirect(_next)
+    session['uid'] = user.id
+    return redirect(next_url)
+
 
 def logout():
-    session.pop('username')
-    session.pop('role')
+    session.pop('username', None)
+    session.pop('role', None)
+    session.pop('uid', None)
     return redirect(url_for('index'))
+
 
 def mailcheck():
     email = request.args['email']
@@ -82,4 +77,4 @@ def mailcheck():
         send_email('otp' , email , otp=otp)
         return jsonify(dict(otp = generate_password_hash(otp)))
     else:
-        return jsonify(dict(status='is-danger'))
+        return jsonify(dict(status = 'is-danger'))
