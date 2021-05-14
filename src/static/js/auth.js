@@ -18,8 +18,50 @@ function tabchange(Id){
 }
 
 
-function checkRegValidity() {
+function checkRegValidity(form) {
+
+    if(!form[0].checkValidity()){
+
+        form[0].classList.add('exists');
+        form[0].classList.add('is-danger');
+        return false;
+
+    }
+
+    if(!form[1].checkValidity()){
+
+        form[1].classList.add('exists');
+        form[1].classList.add('is-danger');
+        return false;
+
+    }
+
+    if(!form[2].checkValidity()){
+
+        form[2].classList.add('exists');
+        form[2].classList.add('is-danger');
+        return false;
+
+    }
+
+    if(!form[3].checkValidity()){
+
+        form[3].classList.add('exists');
+        form[3].classList.add('is-danger');
+        return false;
+
+    }
+
+    if(!(form[2].value===form[3].value)){
+
+        form[3].classList.add('exists');
+        form[3].classList.add('is-danger');
+        return false;
+
+    }
+
 	return true;
+
 }
 
 
@@ -34,6 +76,7 @@ function getOTP(self) {
 	self.classList.add('loader');
 
 	let email = form.elements[0].value;
+	console.log(email)
 	fetch('/auth/isregistered?email=' + email)
 	.then((response) => response.json())
 	.then((data) => {
