@@ -1,3 +1,14 @@
+nav{
+
+    background-color: #13131f;
+    color: #e1dfed;
+
+}
+
+nav .nav-wrapper .brand-logo {
+    margin-left: 10px;
+}
+
 .overlay{
 
     width: 100vw;
