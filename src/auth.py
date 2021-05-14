@@ -40,7 +40,7 @@ def register():
         message = f"<b>Unable to register, OTP does not match.<a href='/auth?next={next_url}'><i>Try Registering Again</i></a> .</b>"
         return (message, 403)
     
-    uid = new_user(name, email, password):
+    uid = new_user(name, email, password)
     session['username'] = name
     session['role'] = 'user'    
     session['uid'] = uid
