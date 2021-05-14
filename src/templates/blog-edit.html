@@ -28,7 +28,6 @@
 <script type="text/javascript">
 
 var simplemde; 
-
 window.onload = function(){ 
 	simplemde = new SimpleMDE({
 	element : document.getElementById("blog"),
@@ -50,36 +49,31 @@ window.onload = function(){
 	
 </script>
 
-{% endblock %} 
-
-
-
-
+{% endblock %}
 
 {% block content %}
-
-
 		 <div class="content"> 
 			<h2> PUBLISH YOUR BLOG </h2>
 			
 			<form class="input-field" id="myform" action="/blog-create" method="post">
-				<input placeholder="BLOG TITLE"  name="blog-title"  id="blog-title" type="text" value="{{title}}" class="validate" required>
+				<input placeholder="BLOG TITLE"  name="title"  id="blog-title" type="text" value="{{title}}" class="validate" required>
 				<div class="switch">
 					<label>
-					  <b>Public</b>
+					  <span class="label">Make a Private Post</span>
 					  <input name="bswitch" type="checkbox" id="bswitch">
 					  <span class="lever"></span>
-					  <b>Public</b>
 					  
 					</label>
 				</div>
-				<input name="private" id="private" value="true" type="hidden">
-				<p id="error" class="error"></p>
+				<input name="private" id="private" value="false" type="hidden">
 
 				<div class="markdown"> 
-				<textarea name="blog" id="blog" required>{{content}}</textarea>
+				<p><span class="label">Content</span></p>
+				<textarea name="content" id="blog" required>{{content}}</textarea>
 				</div> 
 				
+				<p id="error" class="error"></p>
+
 				<button type="button" class="waves-effect waves-light btn" onclick="createblog()" >PUBLISH</button>
 				
 			</form>

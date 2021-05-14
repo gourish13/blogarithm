@@ -34,7 +34,6 @@ function getOTP(self) {
 	self.classList.add('loader');
 
 	let email = form.elements[0].value;
-	console.log(email)
 	fetch('/auth/isregistered?email=' + email)
 	.then((response) => response.json())
 	.then((data) => {

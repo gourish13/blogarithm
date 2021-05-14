@@ -8,40 +8,44 @@ body {
     font-family: 'Montserrat', sans-serif;
 }
 
+a {
+    font-weight: bold;
+}
+
+i.right, i.left, 
+.sidenav li > a > i.material-icons.left {
+    margin: 0 0 0 0; 
+}
+
 .error{
-	
 	color : red ; 
 	font-weight : bold ; 
-	
-	
 }
 
+h2 {
+	margin: 3%;
+	font-size: 4vw;
+}
 
 .content{ 
-    margin : auto; 
-    width : 100vw; 
+    width: 100%; 
 }
 
-input{
-    width:50vw !important;	
+input[type="text"]:not(.browser-default) {
 	border-bottom-color : #1eb124 !important;
-	margin-left : 5vw;
-	
+}
+
+input[type="text"]:not(.browser-default)::placeholder {
+	font-size: 3vw;
+	color: #6f6f6f;
 }
 
 .brand-logo{ 
-
-margin-left : 10px;
-
+	margin-left : 10px;
 }
 
 .markdown{ 
-
 	margin-top : 2vw; 
-	border-bottom-color : #1eb124 !important;
-	border-bottom-width : 2vw !important;
-
-
 }
 
 #blog-title{
@@ -56,22 +60,43 @@ nav {
 }
 
 button{ 
-
-margin-left : 15vw ;  
-width : 70vw; 
-height : 5vh !important;
-font-weight : bold;
-font-size : 4vw !important;
-background-color:#1eb124 !important;
-font-family: 'Krona One', sans-serif !important;
-
+	margin-left: 15%;  
+	margin-right: 15%;  
+	width : 70%; 
+	height : 5vh !important;
+	font-weight : bold;
+	font-size : 4vw !important;
+	background-color:#1eb124 !important;
+	font-family: 'Krona One', sans-serif !important;
 }
 
+span.label {
+	font-size: 2vw;
+}
+
+ .input-field {  
+     margin-left: 5vw; 
+     margin-right: 5vw; 
+ } 
 
 
-/* .input-field{ */ 
+@media screen and (max-width: 992px) {
+	h2 {
+		font-size: 5vw;
+	}
+	span.label {
+		font-size: 3vw;
+	}
+}
 
-/*     width : 100%; */
-
-/* } */
-
+@media screen and (max-width: 992px) {
+	h2 {
+		font-size: 7vw;
+	}
+	span.label {
+		font-size: 5vw;
+	}
+	input[type="text"]:not(.browser-default)::placeholder {
+		font-size: 5vw;
+	}
+}

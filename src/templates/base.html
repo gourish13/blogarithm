@@ -27,18 +27,18 @@
         </head>
         <body>
                 {% block scripts %}
-                    {% if session['username'] is defined %}
                         <script type="text/javascript">
+                    {% if session['username'] is defined %}
                             document.addEventListener('DOMContentLoaded', function() {
                                 var elems = document.querySelectorAll('.dropdown-trigger');
                                 var instances = M.Dropdown.init(elems);
                               });
+                    {% endif %}
                             document.addEventListener('DOMContentLoaded', function() {
                                 var elems = document.querySelectorAll('.sidenav');
-                                var instances = M.Sidenav.init(elems);
+                                var instances = M.Sidenav.init(elems, {draggable: true});
                               });
                         </script>
-                    {% endif %}
                 {% endblock %}
                 
                 {% block navbar %}
@@ -47,7 +47,7 @@
                     <div class="nav-wrapper">
                             <a href="/" class="brand-logo">Blogarithm</a>
                             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-                      <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
 
                         {% if  session['username'] is defined %}
 
@@ -61,26 +61,17 @@
                                 <i class="material-icons right">arrow_drop_down</i>
                                 </a>
                             </li>
-                      </ul>
+                    </ul>
                         <!-- Dropdown -->
-                      <ul id="dropdown1" class="dropdown-content">
-                          <li><a href="#">Profile</a></li>
-                          <li>
+                    <ul id="dropdown1" class="dropdown-content">
+                        <li><a href="#">Profile</a></li>
+                        <li>
                                 <a href="/auth/logout">Logout</a>
-                            </li>
-                        </ul>
-                        <!-- Hamburger -->
-                          <ul class="sidenav" id="mobile-demo">
-                            <li><a href="#">Published Blogs</a></li>
-                            <li><a href="/blog-create">
-                                <i class="material-icons left">add</i> Publish Blog</a></li>
-                            <li>
-                                <a class="dropdown-trigger" data-target="dropdown1" href="#!">
-                                {{ session['username'] }}
-                                <i class="material-icons right">arrow_drop_down</i></a>
-                          </ul>
+                        </li>
+                    </ul>
 
                         {% else %}
+
                             <li><a href="/auth">Login | Sign up</a></li>
                       </ul>
                         {% endif %}
@@ -89,8 +80,36 @@
 
                 {% endblock %}
 
+
+                {% block hamburger_menu %}
+                        <!-- Hamburger -->
+                    {% if session['username'] is defined %}
+                        <ul class="sidenav" id="mobile-demo">
+                            <li><a class="waves-effect" href="#">Published Blogs</a></li>
+                            <li><a class="waves-effect" href="/blog-create">
+                                <i class="material-icons left">add</i> Publish Blog</a></li>
+                            <li>
+                                <li><div class="divider"></div></li>
+                                <a class="subheader">
+                                {{ session['username'] }}
+                                </a>
+                            </li>
+                           <li><a class="waves-effect" href="/">Profile</a></li>
+                            <li>
+                                    <a class="waves-effect" href="/auth/logout">Logout</a>
+                            </li> 
+                        </ul>
+                    {% else %}
+                        <ul class="sidenav" id="mobile-demo">
+                            <li><a class="subheader">Login or Sign up</a></li>
+                            <li><div class="divider"></div></li>
+                            <li><a class="waves-effect" href="/auth">Login | Sign up</a></li>
+                        </ul>
+                    {% endif %}
+                {% endblock %}
+
                 {% block content %}
-                        Replaceable Page Content
+                        {# Replaceable Page Content #}
                 {% endblock %}
 
         </body>

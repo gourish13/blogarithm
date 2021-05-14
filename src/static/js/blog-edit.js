@@ -1,17 +1,17 @@
 function createblog() {
-	var myform = document.getElementById("myform");
-	var title = document.getElementById("blog-title").value.trim() ;
-	var content = simplemde.value().trim();
-	console.log() ; 
-	if(title === '')
-		document.getElementById("error").innerHTML = "Title Cannot be empty" ; 
-	else if(content === '')
-		document.getElementById("error").innerHTML = "Empty Blog cannot be published" ; 
-	else
-	{
-		if(document.getElementById("bswitch").checked)
-		document.getElementById("private").value = "false"
-		
-		myform.submit()
+	let myform = document.getElementById("myform");
+	let title = document.getElementById("blog-title").value.trim() ;
+	let content = simplemde.value().trim();
+
+	if(title === '') {
+		document.getElementById("error").innerHTML = "Title Cannot be empty" ;
+		return false; 
 	}
+	if(content === '') {
+		document.getElementById("error").innerHTML = "No content to publish" ; 
+		return false;
+	}
+
+	document.getElementById("private").value = document.getElementById("bswitch").checked;
+	myform.submit();
 }

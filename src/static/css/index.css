@@ -14,10 +14,6 @@ nav {
     transition: all .5s ease-in-out;
 }
 
-.navbar-fixed {
-    z-index: 990;
-}
-
 nav.nav-hidden {
     opacity: 0;
     pointer-events: none;
@@ -33,8 +29,13 @@ nav .nav-wrapper .brand-logo {
     margin-left: 10px;
 }
 
-i {
-    margin: 5px;
+a {
+    font-weight: bold;
+}
+
+i.right, i.left, 
+.sidenav li > a > i.material-icons.left {
+    margin: 0 0 0 0; 
 }
 
 main {
@@ -69,4 +70,30 @@ main {
 .posts {
     float: left;
     width: 100%;
+}
+
+
+@media screen and (max-width: 992px) {
+    .header {
+        height: 70vh;
+    }
+
+    .header h2 {
+        margin-top: 26vh;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .header {
+        height: 50vh;
+    }
+
+    .header h2 {
+        margin-top: 21vh;
+        font-size: 7vw;
+    }
+
+    .header p {
+        font-size: 4vw;
+    }
 }
