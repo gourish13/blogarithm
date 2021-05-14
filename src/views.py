@@ -24,25 +24,20 @@ def index():
 # @route    GET /blog-create
 # @route    POST /blog-create
 def blog_create():
-    
     if request.method == 'GET' :
         return render_template('blog-edit.html')
     
     blog_info = dict(request.form)
     blog_info['slug'] = slugify(request.form['blog-title'])
-    blog_info['user'] = session['username']
     if blog_info['private'] == 'true' :
-        _id = new_blog(blog_info['blog-title'] , blog_info['content'] , blog_info['user'] , blog_info['slug'] ,private = True)
+        uid = new_blog(blog_info['blog-title'] , blog_info['content'] , blog_info['username'] , blog_info['slug'] ,private = True)
     else:
-        _id = new_blog(blog_info['blog-title'] , blog_info['content'] , blog_info['user'] , blog_info['slug'])
+        uid = new_blog(blog_info['blog-title'] , blog_info['content'] , blog_info['username'] , blog_info['slug'])
     
     
-    view_url  = '/blog/' + blog_info['slug'] + '/' + str(_id)
+    view_url  = '/blog/' + blog_info['slug'] + '-' + str(uid)
     return redirect(view_url)
     
-    
-
-
 
 
 # @desc     Blog Update
@@ -60,10 +55,7 @@ def blog_update(slug):
 # @desc     Blog View Page
 # @route    GET /blog/<string:slug>
 def blog_view(slug):
-    if 'username' in session:
-        return render_template('blogview.html', title='title', content='blogcontent')
-    url = '/auth?next=blog-view/'+slug 
-    return redirect(url)
+    return render_template('blogview.html', title='title', content='blogcontent')
 
 
 

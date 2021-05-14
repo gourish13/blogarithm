@@ -23,13 +23,13 @@ def new_user(name, email, password, superuser = False):
     return True
 
 
-
 # Get user data by email
 def get_user(email):
     user = db(db.users.email == email).select(
                     db.users.id, db.users.name, db.users.password, db.users.role
                 )
     return user if not user else user[0]
+
 
 # Checking Registration
 def is_registered(email):
