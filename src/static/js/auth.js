@@ -64,6 +64,12 @@ function checkRegValidity(form) {
 
 }
 
+function reEditReg(self){
+
+    self.classList.remove('exists');
+    self.classList.remove('is-danger');
+
+}
 
 function checkLoginValidity() {
 
