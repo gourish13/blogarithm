@@ -67,4 +67,4 @@ def privacy_policy():
 
 # @desc     404 Page Not Found
 def page_not_found_404(error):
-    return render_template('404.html')
+    return render_template('404.html'), 404
