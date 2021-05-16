@@ -19,13 +19,11 @@ function tabchange(Id){
 
 
 function checkRegValidity() {
+	
 	return true;
 }
 
 
-function checkLoginValidity() {
-
-}
 
 function getOTP(self) {
 	let form = document.forms[0];
