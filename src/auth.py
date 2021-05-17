@@ -10,6 +10,7 @@ from flask import (
     url_for,
     session,
     jsonify,
+    flash
 )
 from .user_models import (
     new_user,
@@ -37,8 +38,8 @@ def register():
     otp = request.form['otp']
 
     if not check_password_hash(otp, hashed_otp):
-        message = f"<b>Unable to register, OTP does not match.<a href='/auth?next={next_url}'><i>Try Registering Again</i></a> .</b>"
-        return (message, 403)
+        flash('Incorrect OTP, Verification Failed')
+        return redirect(f'/auth?next={next_url}')
 
     uid = new_user(name, email, password)
     session['username'] = name
@@ -52,11 +53,12 @@ def login():
     password = request.form['password']
     next_url= request.form['next']
     user = get_user(email)
-    message = f"<b>Email or Password incorrect. <a href='/auth?next={next_url}'><i>Try again</i> </a>.</b>"
     if not user:
-        return (message, 401)
+        flash('Incorrect Email or Password')
+        return redirect(f'/auth?next={next_url}')
     if not check_password_hash(user.password, password):
-        return (message, 401)
+        flash('Incorrect Email or Password')
+        return redirect(f'/auth?next={next_url}')
     session['username'] = user.name
     session['role'] = user.role
     session['uid'] = user.id

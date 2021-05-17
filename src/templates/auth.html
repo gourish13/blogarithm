@@ -29,14 +29,16 @@
 
 {% block content %}
 			<main> 
-				 <div class="alert">
-						<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-							{% if email is defined %}
-								Incorrect Email or Password
-							{% else %}
-								Incorrect OTP, Verification Failed
-							{% endif %}
-					</div> 
+				{% with messages = get_flashed_messages() %}
+					{% if messages %}
+						{% for message in messages %}
+						 <div class="alert">
+								<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+								{{ message }}
+							</div> 
+						{% endfor %}
+					{% endif %}
+				{% endwith %}
 			
 				<div class="main-area"> 
 						<div class="tabs">
