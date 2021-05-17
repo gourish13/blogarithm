@@ -49,7 +49,8 @@ def blog_update(slug):
             return render_template('blog-edit.html' ,title='title' , content='blogcontent')
         return jsonify(request.form)
     # url = '/auth?next=blog-update/'+slug 
-    return redirect(f'/auth?next=blog-update/{slug}')
+    return redirect(f'/auth?next=/blog-update/{slug}')
+
 
 
 # @desc     Blog View Page

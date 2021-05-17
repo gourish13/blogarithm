@@ -12,8 +12,8 @@ from flask import (
     jsonify,
 )
 from .user_models import (
-    new_user, 
-    get_user, 
+    new_user,
+    get_user,
     is_registered
 )
 from .mail import send_email
@@ -22,16 +22,16 @@ from .otpgen import genkey
 
 # Authentication Page
 def auth():
-    next_url = '/' + (request.args['next'] if 'next' in request.args else '')
+    next_url = request.args['next'] if 'next' in request.args else '/'
     if 'username' in session:
         return redirect(next_url)
     return render_template('auth.html', next=next_url)
 
 
 def register():
-    name = request.form['name'] 
+    name = request.form['name']
     email = request.form['email']
-    next_url = request.form['next'] 
+    next_url = request.form['next']
     password = generate_password_hash(request.form['password'], 'sha256')
     hashed_otp = request.form['hashed-otp']
     otp = request.form['otp']
@@ -39,20 +39,20 @@ def register():
     if not check_password_hash(otp, hashed_otp):
         message = f"<b>Unable to register, OTP does not match.<a href='/auth?next={next_url}'><i>Try Registering Again</i></a> .</b>"
         return (message, 403)
-    
+
     uid = new_user(name, email, password)
     session['username'] = name
-    session['role'] = 'user'    
+    session['role'] = 'user'
     session['uid'] = uid
-    return redirect(next_url)  
-    
-    
+    return redirect(next_url)
+
+
 def login():
     email = request.form['email']
     password = request.form['password']
     next_url= request.form['next']
     user = get_user(email)
-    message = f"<b>Email or Password incorrect. <a href='/auth?next={next_url}'><i>Try again</i> .</b>"
+    message = f"<b>Email or Password incorrect. <a href='/auth?next={next_url}'><i>Try again</i> </a>.</b>"
     if not user:
         return (message, 401)
     if not check_password_hash(user.password, password):
