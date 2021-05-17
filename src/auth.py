@@ -55,10 +55,10 @@ def login():
     user = get_user(email)
     if not user:
         flash('Incorrect Email or Password')
-        return redirect(f'/auth?next={next_url}')
+        return redirect(f'/auth?next={next_url}&email={email}')
     if not check_password_hash(user.password, password):
         flash('Incorrect Email or Password')
-        return redirect(f'/auth?next={next_url}')
+        return redirect(f'/auth?next={next_url}&email={email}')
     session['username'] = user.name
     session['role'] = user.role
     session['uid'] = user.id
