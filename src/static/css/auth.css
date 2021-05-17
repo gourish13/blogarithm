@@ -4,6 +4,28 @@
 	box-sizing : border-box; 
 }
 
+.alert {
+  padding: 20px;
+  background-color: rgba(250, 60, 70, 0.3);
+  color: black;
+	text-align: center;
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: black;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: #f44336;
+}
+
 input {
 	margin-bottom: 5%;
 }
