@@ -35,9 +35,11 @@ def register():
     next_url = request.form['next']
     password = generate_password_hash(request.form['password'], 'sha256')
     hashed_otp = request.form['hashed-otp']
+    
     otp = request.form['otp']
+   
 
-    if not check_password_hash(otp, hashed_otp):
+    if not check_password_hash(hashed_otp, otp):
         flash('Incorrect OTP, Verification Failed')
         return redirect(f'/auth?next={next_url}')
 

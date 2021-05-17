@@ -6,6 +6,7 @@ from flask import Flask
 
 
 def app_factory():
+    
     app = Flask(__name__)
     app.config['SECRET_KEY'] = environ['SECRET']
     app.config['TEMPLATES_AUTO_RELOAD'] = True
@@ -39,5 +40,6 @@ def app_factory():
     app.add_url_rule('/auth/login' , view_func=login , methods=['POST'])
     app.add_url_rule('/auth/logout' , view_func=logout)
     app.add_url_rule('/auth/isregistered' , view_func=mailcheck)
-
+        
+        
     return app
