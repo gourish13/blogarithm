@@ -1,3 +1,39 @@
+resend = (function(){
+
+    let count = 2;
+
+    return function(self , a){
+
+        if(count > 0){
+
+            count--;
+            emailid = self.form.elements['email'].value
+            let url = "";
+            if(a===0)
+                url = "/auth/otp/resend?email=";
+            else
+                url = "/auth/resend-password?email="
+            
+            self.classList.add('loader');
+
+            fetch(url + emailid)
+                    .then(function(data) {return data.json();})
+                    .then(function(data){
+
+                        self.form.elements['hash'].value = data['hash'];
+                        self.innerHTML = `Resend Otp(${count})`;
+                        self.classList.remove('loader');
+                        if(count === 0) self.disabled = true;
+
+                    })
+                    .catch(function(err) {throw err;})
+
+        }
+    
+    }
+    
+})();
+
 const tabs = document.getElementsByClassName('tabby');
 
 function tabchange(Id){
@@ -81,7 +117,7 @@ function getOTP(self) {
 
 	let email = form.elements[0].value;
 	console.log(email)
-	fetch('/auth/isregistered?email=' + email)
+	fetch('/auth/otp/send?email=' + email)
 	.then((response) => response.json())
 	.then((data) => {
 		if (data.otp) {

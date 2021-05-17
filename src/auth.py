@@ -74,11 +74,25 @@ def logout():
     return redirect(url_for('index'))
 
 
-def mailcheck():
+def mailcheck(mode):
     email = request.args['email']
-    if not is_registered(email):
+    registered = is_registered(email) if mode=="send" else None
+    if not registered:
         otp = genkey()
         send_email('otp' , email , otp=otp)
         return jsonify(dict(otp = generate_password_hash(otp)))
     else:
-        return jsonify(dict(status = 'is-danger'))
+        return jsonify(dict(status='is-danger'))
+
+
+def resetpwd():
+    email = request.args['email']
+    if request.method=="GET":
+        if is_registered(email):
+            otp = genkey()
+            send_email('reset password' , email , otp=otp)
+            return jsonify(dict(otp = generate_password_hash(otp)))
+        else:
+            return jsonify(dict(status='is-danger'))
+    else:
+        pass
