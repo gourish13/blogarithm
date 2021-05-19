@@ -3,7 +3,6 @@ Database models
 """
 
 from os import environ
-from datetime import datetime
 from pydal import DAL, Field
 
 DB_URI = environ['DATABASE_URL']
