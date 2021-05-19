@@ -39,7 +39,7 @@ def app_factory():
     app.add_url_rule('/auth/register' , view_func=register , methods=['POST'])
     app.add_url_rule('/auth/login' , view_func=login , methods=['POST'])
     app.add_url_rule('/auth/logout' , view_func=logout)
-    app.add_url_rule('/auth/isregistered' , view_func=mailcheck)
+    app.add_url_rule('/auth/otp/<slug>' , view_func=mailcheck)
         
         
     return app
