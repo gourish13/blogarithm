@@ -30,10 +30,11 @@ def blog_create():
         return render_template('blog-edit.html')
     blog_info = dict(request.form)
     blog_info['slug'] = slugify(request.form['blog-title'])
+    
     if blog_info['private'] == 'true' :
-        uid = new_blog(blog_info['blog-title'] , blog_info['content'] , blog_info['username'] , blog_info['slug'] ,private = True)
+        uid = new_blog(session['uid'] , blog_info['blog-title'] , blog_info['content'] , blog_info['slug'])
     else:
-        uid = new_blog(blog_info['blog-title'] , blog_info['content'] , blog_info['username'] , blog_info['slug'])
+        uid = new_blog(session['uid'] , blog_info['blog-title'] , blog_info['content'] , blog_info['slug'])
     blog_info['slug'] += '-' + str(uid)
     # view_url  = '/blog/' + blog_info['slug'] + '-' + str(uid)
     return redirect(f'''/blog/{blog_info['slug']}''')
@@ -56,6 +57,8 @@ def blog_update(slug):
 # @desc     Blog View Page
 # @route    GET /blog/<string:slug>
 def blog_view(slug):
+    b_id , slug = slug.split('-')
+    blog = get_blog(
     return render_template('blogview.html', title='title', content='blogcontent')
 
 

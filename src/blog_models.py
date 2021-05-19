@@ -17,7 +17,11 @@ def new_blog(user_id, title , content, slug):
     return _id
 
 
-
+def get_blog(blog_id , slug):
+    blog_info = db((db.blogs.id == blog_id) & (db.blogs.slug == slug)).select(
+                    db.users.title, db.users.content
+                )
+    return blog_info
 
 
 
