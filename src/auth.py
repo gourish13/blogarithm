@@ -26,6 +26,13 @@ def auth():
     next_url = request.args['next'] if 'next' in request.args else '/'
     if 'username' in session:
         return redirect(next_url)
+    if 'name' in request.args:
+        return render_template('auth.html',
+            next=next_url, email=request.args['email'],
+            name=request.args['name'], signup=True)
+    if 'email' in request.args:
+        return render_template('auth.html',
+            next=next_url, logemail=request.args['email'])
     return render_template('auth.html', next=next_url)
 
 
@@ -35,13 +42,12 @@ def register():
     next_url = request.form['next']
     password = generate_password_hash(request.form['password'], 'sha256')
     hashed_otp = request.form['hashed-otp']
-    
     otp = request.form['otp']
    
 
     if not check_password_hash(hashed_otp, otp):
         flash('Incorrect OTP, Verification Failed')
-        return redirect(f'/auth?next={next_url}')
+        return redirect(f'/auth?next={next_url}&email={email}&name={name}')
 
     uid = new_user(name, email, password)
     session['username'] = name

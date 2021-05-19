@@ -80,7 +80,7 @@ main {
 
 .arrow {
   position: absolute;
-  width: 2.1rem;
+  width: 3.1rem;
   height: 0.48rem;
   opacity: 0;
   transform: scale(0.3);
@@ -110,13 +110,13 @@ main {
 
 .arrow:before {
   left: 0;
-  transform: skewY(30deg);
+  transform: skewY(20deg);
 }
 
 .arrow:after {
   right: 0;
   width: 50%;
-  transform: skewY(-30deg);
+  transform: skewY(-20deg);
 }
 
 @-webkit-keyframes move-arrow {

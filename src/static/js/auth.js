@@ -13,16 +13,13 @@ resend = (function(){
                 url = "/auth/otp/resend?email=";
             else
                 url = "/auth/resend-password?email="
-            
-            self.classList.add('loader');
 
             fetch(url + emailid)
                     .then(function(data) {return data.json();})
                     .then(function(data){
 
-                        self.form.elements['hash'].value = data['hash'];
-                        self.innerHTML = `Resend Otp(${count})`;
-                        self.classList.remove('loader');
+                        self.form.elements['hashed-otp'].value = data['otp'];
+                        self.innerHTML = `Resend(${count})`;
                         if(count === 0) self.disabled = true;
 
                     })
