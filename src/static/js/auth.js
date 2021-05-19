@@ -90,6 +90,7 @@ function checkRegValidity(form) {
 
         form[3].classList.add('exists');
         form[3].classList.add('is-danger');
+        document.getElementById('warn').innerHTML = "Passwords does not match";
         return false;
 
     }
@@ -107,13 +108,13 @@ function reEditReg(self){
 
 
 function getOTP(self) {
+    document.getElementById('warn').innerHTML = '';
 	let form = document.forms[0];
 	if (!checkRegValidity(form)) return false;
 
 	self.classList.add('loader');
 
 	let email = form.elements[0].value;
-	console.log(email)
 	fetch('/auth/otp/send?email=' + email)
 	.then((response) => response.json())
 	.then((data) => {
@@ -126,6 +127,7 @@ function getOTP(self) {
 			self.classList.remove('loader');
 			form.elements[0].classList.add(data.status);
 			form.elements[0].classList.add('exists');
+            document.getElementById('warn').innerHTML = "Email Id is already registered";
 		}
 	})
 	.catch(console.error);
