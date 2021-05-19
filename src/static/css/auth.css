@@ -61,7 +61,7 @@ main {
 	 height : 100vh;
 }
 
-.loader {
+.button.loader {
 	border-radius: 100px;
 	height: 60px;
 	width: 100px;

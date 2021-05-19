@@ -6,6 +6,7 @@ resend = (function(){
 
         if(count > 0){
 
+            self.innerHTML = `Resend <span class="loader"></span>`;
             count--;
             emailid = self.form.elements['email'].value
             let url = "";
