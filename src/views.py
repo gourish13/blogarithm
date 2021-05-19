@@ -11,7 +11,7 @@ from flask import (
     jsonify,
 )
 from slugify import slugify
-from .blog_models import new_blog
+from .blog_models import (new_blog , get_blog)
 
 # @desc     Home Page
 # @route    GET /
@@ -57,9 +57,13 @@ def blog_update(slug):
 # @desc     Blog View Page
 # @route    GET /blog/<string:slug>
 def blog_view(slug):
-    b_id , slug = slug.split('-')
-    blog = get_blog(
-    return render_template('blogview.html', title='title', content='blogcontent')
+    pos = slug.rfind('-')
+    slg  , b_id = slug[:pos] , int(slug[(pos+1):])
+    blog = get_blog(b_id,slg)
+    
+    
+    
+    return render_template('blogview.html', title=blog.title, content=blog.content)
 
 
 
