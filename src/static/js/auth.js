@@ -1,3 +1,37 @@
+resend = (function(){
+
+    let count = 2;
+
+    return function(self , a){
+
+        if(count > 0){
+
+            self.innerHTML = `Resend <span class="loader"></span>`;
+            count--;
+            emailid = self.form.elements['email'].value
+            let url = "";
+            if(a===0)
+                url = "/auth/otp/resend?email=";
+            else
+                url = "/auth/resend-password?email="
+
+            fetch(url + emailid)
+                    .then(function(data) {return data.json();})
+                    .then(function(data){
+
+                        self.form.elements['hashed-otp'].value = data['otp'];
+                        self.innerHTML = `Resend(${count})`;
+                        if(count === 0) self.disabled = true;
+
+                    })
+                    .catch(function(err) {throw err;})
+
+        }
+    
+    }
+    
+})();
+
 const tabs = document.getElementsByClassName('tabby');
 
 function tabchange(Id){
@@ -57,6 +91,7 @@ function checkRegValidity(form) {
 
         form[3].classList.add('exists');
         form[3].classList.add('is-danger');
+        document.getElementById('warn').innerHTML = "Passwords does not match";
         return false;
 
     }
@@ -74,14 +109,14 @@ function reEditReg(self){
 
 
 function getOTP(self) {
+    document.getElementById('warn').innerHTML = '';
 	let form = document.forms[0];
 	if (!checkRegValidity(form)) return false;
 
 	self.classList.add('loader');
 
 	let email = form.elements[0].value;
-	console.log(email)
-	fetch('/auth/isregistered?email=' + email)
+	fetch('/auth/otp/send?email=' + email)
 	.then((response) => response.json())
 	.then((data) => {
 		if (data.otp) {
@@ -93,6 +128,7 @@ function getOTP(self) {
 			self.classList.remove('loader');
 			form.elements[0].classList.add(data.status);
 			form.elements[0].classList.add('exists');
+            document.getElementById('warn').innerHTML = "Email Id is already registered";
 		}
 	})
 	.catch(console.error);

@@ -47,6 +47,7 @@ i {
 	margin:auto; 
 	width : 50vw;
 	height : 70vh;
+    padding-top: 10vh;
 }
 
 .icon-area {
@@ -60,7 +61,7 @@ main {
 	 height : 100vh;
 }
 
-.loader {
+.button.loader {
 	border-radius: 100px;
 	height: 60px;
 	width: 100px;
@@ -84,8 +85,8 @@ main {
 
 }
 
-.main-area{
-
-    padding-top: 10vh;
-
+@media screen and (max-width: 601px) {
+	.main-area {
+		width: 75vw;
+	}
 }

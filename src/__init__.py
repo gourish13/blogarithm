@@ -33,13 +33,16 @@ def app_factory():
         register,
         login,
         logout,
-        mailcheck
+        mailcheck,
+        resetpwd
      )
     app.add_url_rule('/auth' , view_func=auth)
     app.add_url_rule('/auth/register' , view_func=register , methods=['POST'])
     app.add_url_rule('/auth/login' , view_func=login , methods=['POST'])
     app.add_url_rule('/auth/logout' , view_func=logout)
-    app.add_url_rule('/auth/otp/<slug>' , view_func=mailcheck)
+    app.add_url_rule('/auth/otp/<string:mode>' , view_func=mailcheck)
+    app.add_url_rule('/auth/resend-password' , view_func=resetpwd , methods=['POST'])
+
         
         
     return app
