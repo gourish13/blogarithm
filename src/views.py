@@ -30,15 +30,14 @@ def blog_create():
         return render_template('blog-edit.html')
     blog_info = dict(request.form)
     blog_info['slug'] = slugify(request.form['blog-title'])
-    
+
     if blog_info['private'] == 'true' :
         uid = new_blog(session['uid'] , blog_info['blog-title'] , blog_info['content'] , blog_info['slug'])
     else:
         uid = new_blog(session['uid'] , blog_info['blog-title'] , blog_info['content'] , blog_info['slug'])
     blog_info['slug'] += '-' + str(uid)
-    # view_url  = '/blog/' + blog_info['slug'] + '-' + str(uid)
     return redirect(f'''/blog/{blog_info['slug']}''')
-    
+
 
 
 # @desc     Blog Update
@@ -49,20 +48,16 @@ def blog_update(slug):
         if request.method == 'GET':
             return render_template('blog-edit.html' ,title='title' , content='blogcontent')
         return jsonify(request.form)
-    # url = '/auth?next=blog-update/'+slug 
     return redirect(f'/auth?next=/blog-update/{slug}')
 
 
 
 # @desc     Blog View Page
 # @route    GET /blog/<string:slug>
-def blog_view(slug):
-    pos = slug.rfind('-')
-    slg  , b_id = slug[:pos] , int(slug[(pos+1):])
-    blog = get_blog(b_id,slg)
-    
-    
-    
+def blog_view(slug_id):
+    pos = slug_id.rfind('-')
+    slug, blog_id = slug_id[:pos] , int(slug_id[(pos+1):])
+    blog = get_blog(blog_id,slg)
     return render_template('blogview.html', title=blog.title, content=blog.content)
 
 

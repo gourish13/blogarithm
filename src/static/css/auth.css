@@ -30,10 +30,6 @@ input {
 	margin-bottom: 5%;
 }
 
-i {
-	margin : 5.5vw;
-	cursor: pointer;
-}
 
 .page-1 {
 	display : block;
@@ -46,14 +42,15 @@ i {
 .main-area {
 	margin:auto; 
 	width : 50vw;
-	height : 70vh;
-    padding-top: 10vh;
+	height : 70%;
+	padding-top: 10vh;
 }
 
 .icon-area {
+	margib-top: 20px;
 	margin : auto;
 	width : 50vw;
-	height : 30vw;
+	height : 30%;
 }
 
 main {
@@ -85,8 +82,33 @@ main {
 
 }
 
+i {
+	margin : 5.5vw;
+	cursor: pointer;
+	font-size: 6vw;
+}
+
 @media screen and (max-width: 601px) {
 	.main-area {
 		width: 75vw;
+		height: 68%;
+	}
+
+	.icon-area {
+		height: 32%;
+	}
+	
+	i {
+		margin : 3vw;
+		font-size: 10vw;
 	}
 }
+
+@media screen and (min-width: 602px) {
+	i {
+		font-size: 7vw;
+		margin : 4.7vw;
+	}
+}
+
+/* @media screen and (max-width: ) */
