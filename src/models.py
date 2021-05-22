@@ -2,10 +2,10 @@
 Database models
 """
 
-from os import environ
 from pydal import DAL, Field
+from .constants import DATABASE_URL
 
-DB_URI = environ['DATABASE_URL']
+DB_URI = DATABASE_URL
 
 db = DAL(DB_URI, lazy_tables=True)
 
