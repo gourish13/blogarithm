@@ -6,9 +6,9 @@ from smtplib import SMTP
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
-from os import environ
+from .constants import EMAIL
 
-EMAIL_ID, EMAIL_PWD = environ['EMAIL'].split()
+EMAIL_ID, EMAIL_PWD = EMAIL.split()
 
 mail = dict()
 mail['otp'] = ['OTP for Email Verification',

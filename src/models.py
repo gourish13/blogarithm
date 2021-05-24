@@ -2,16 +2,16 @@
 Database models
 """
 
-from os import environ
 from pydal import DAL, Field
+from .constants import DATABASE_URL
 
-DB_URI = environ['DATABASE_URL']
+DB_URI = DATABASE_URL
 
 db = DAL(DB_URI, lazy_tables=True)
 
 db.define_table('users',
 	Field('name', type='string', required=True, notnull=True),
-	Field('email', type='string', required=True, notnull=True, unique=True),
+	Field('email', type='string', required=True, notnull=False, unique=True),
 	Field('password', type='string', required=False, notnull=False, default=None),
 	Field('role', type='string', required=True, notnull=True, default='user')
 	)

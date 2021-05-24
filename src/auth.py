@@ -77,6 +77,8 @@ def logout():
     session.pop('username', None)
     session.pop('role', None)
     session.pop('uid', None)
+    session.pop('token', None)
+    session.pop('next', None)
     return redirect(url_for('index'))
 
 

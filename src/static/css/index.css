@@ -6,6 +6,7 @@
 
 body {
     font-family: 'Montserrat', sans-serif;
+    background: #e9e9e970;
 }
 
 nav {
@@ -158,8 +159,52 @@ main {
 .posts {
     float: left;
     width: 100%;
+    margin-top: 30px;
 }
 
+.posts ul li {
+    width: 90%;
+    margin: 2vw 5% 0 5%;
+    list-style: none;
+    padding: 3% 3% 3% 0;
+    transition: all 0.5s ease-out;
+}
+
+.posts ul li:hover {
+    background-color: #fffdfdad;
+    border-radius: 15px;
+    box-shadow: 3px 9px 6px #e9e9e9;
+}
+
+.posts ul li:active {
+    background-color: #fffdfdad;
+    border-radius: 5px;
+    box-shadow: 3px 9px 6px #e9e9e9;
+}
+
+.posts ul li a {
+    text-decoration: none;
+}
+
+.post ul li a div.author {
+  text-decoration: underline;
+  color: #00000050;
+}
+
+.post ul li a div.author:hover {
+  text-decoration: none;
+}
+
+.posts ul li a div.title {
+    color: #3c4244;
+    margin-left: 5%;
+}
+
+.posts ul li div.date {
+    color: #11111142;
+    margin-left: 10%;
+    font-weight: bolder;
+}
 
 @media screen and (max-width: 992px) {
     .header {
