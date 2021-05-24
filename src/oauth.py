@@ -2,7 +2,6 @@
 OAuth routes controllers
 """
 
-from .app import app
 from flask import (
     request,
     session,
