@@ -11,7 +11,7 @@ db = DAL(DB_URI, lazy_tables=True)
 
 db.define_table('users',
 	Field('name', type='string', required=True, notnull=True),
-	Field('email', type='string', required=True, notnull=True, unique=True),
+	Field('email', type='string', required=True, notnull=False, unique=True),
 	Field('password', type='string', required=False, notnull=False, default=None),
 	Field('role', type='string', required=True, notnull=True, default='user')
 	)
