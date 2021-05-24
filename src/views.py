@@ -51,6 +51,9 @@ def blog_update(slug):
         return jsonify(request.form)
     # url = '/auth?next=blog-update/'+slug 
     return redirect(f'/auth?next=/blog-update/{slug}')
+    
+    
+
 
 
 
