@@ -125,15 +125,19 @@
 								</div>
 
 							    <input type="hidden" name="next" value="{{next}}">
+								
+								<a onclick="enable()" >
+									<p style="font-family: 'Montserrat', sans-serif; font-weight : bold; margin-bottom : 5px;"> FORGOT PASSWORD  </p> 
+								</a>
 
-									<button type="submit" class="button is-primary is-medium" methid="post" action="/auth/login"> Login </button>
+								<button type="submit" class="button is-primary is-medium" methid="post" action="/auth/login"> Login </button>
 
 						    </form>
 						
 						
 						</div>
 				
-				
+						
 				
 				</div>
 				
@@ -142,18 +146,51 @@
 					<div class="modal-background"></div>
 					<div class="modal-card">
 						<header class="modal-card-head">
-							<p class="modal-card-title">Modal title</p>
-							<button class="delete" aria-label="close"></button>
+							<p class="modal-card-title">RESET PASSWORD</p>
+							<button class="delete" aria-label="close" onclick="disable()" ></button>
 						</header>
-					
+						
 						<section class="modal-card-body">
-							<!-- Content ... -->
+								<div class="field">
+									<div class="control">
+										<input type="email"  id="email" name="email" required class="input" placeholder="Enter your registered email id">
+									</div>
+								</div>
+								
+								
+								<button class="button is-success" id="send_otp" onclick="sendresetotp()">SEND OTP</button> 
+								
+								
+								<div class="field">
+									<div class="control">
+										<input type="text" id="reset-otp" required class="input" placeholder="Enter OTP" style="display :none;">
+									</div>
+								</div>
+								
+								<div class="field">
+									<div class="control">
+										<input type="hidden" >
+									</div>
+								</div> 
+								
+								<div class="field">
+									<div class="control">
+										<input type="password" id="newpassword" name="password" required class="input" placeholder="Enter new password" style="display :none;">
+									</div>
+								</div>
+								
+								<div class="field">
+									<div class="control">
+										<input type="password" id="confirmpassword" required class="input" placeholder="Confirm password" style="display :none;">
+									</div>
+								</div>
+								
 						</section>
 					
 						<footer class="modal-card-foot">
-							<button class="button is-success">Save changes</button>
-							<button class="button">Cancel</button>
+							<button class="button is-success" id="save" style="display :none;">Save</button>
 						</footer>
+						
 					</div>
 				</div>
 				

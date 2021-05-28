@@ -141,3 +141,39 @@ function showNext() {
 	document.getElementsByClassName("page-1")[0].style.display="none";
 	document.getElementsByClassName("page-2")[0].style.display="block";
 }
+
+function sendresetotp()
+{
+	document.getElementById("reset-otp").style.display = "block";
+	document.getElementById("newpassword").style.display = "block";
+	document.getElementById("confirmpassword").style.display = "block";
+	document.getElementById("save").style.display = "block";
+	
+	document.getElementById("email").style.display = "none";
+	document.getElementById("send_otp").style.display = "none";
+	
+}
+
+function enable()
+{
+	document.getElementsByClassName("modal")[0].classList.add("is-active");
+	
+}
+
+
+function disable()
+{
+	
+	document.getElementById("reset-otp").style.display = "none";
+	document.getElementById("newpassword").style.display = "none";
+	document.getElementById("confirmpassword").style.display = "none";
+	document.getElementById("save").style.display = "none";
+	
+	document.getElementById("email").style.display = "block";
+	document.getElementById("send_otp").style.display = "block";
+	document.getElementById("send_otp").style.display = "block";
+	
+	document.getElementsByClassName("modal")[0].classList.remove("is-active");
+	
+}
+
