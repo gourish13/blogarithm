@@ -32,14 +32,14 @@ def app_factory():
         login,
         logout,
         mailcheck,
-        resetpwd
+        resetpwd,
      )
     app.add_url_rule('/auth' , view_func=auth)
     app.add_url_rule('/auth/register' , view_func=register , methods=['POST'])
     app.add_url_rule('/auth/login' , view_func=login , methods=['POST'])
     app.add_url_rule('/auth/logout' , view_func=logout)
     app.add_url_rule('/auth/otp/<string:mode>' , view_func=mailcheck)
-    app.add_url_rule('/auth/resend-password' , view_func=resetpwd , methods=['POST'])
+    app.add_url_rule('/auth/resend-password' , view_func=resetpwd , methods=['GET' , 'POST'])
 
     from .oauth import (
         twitter_login,

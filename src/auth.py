@@ -15,7 +15,8 @@ from flask import (
 from .user_models import (
     new_user,
     get_user,
-    is_registered
+    is_registered,
+    updatepwd
 )
 from .mail import send_email
 from .otpgen import genkey
@@ -103,4 +104,11 @@ def resetpwd():
         else:
             return jsonify(dict(status='is-danger'))
     else:
-        pass
+        email = request.form['email']
+        password = request.form['password']
+        otp = request.form['otp']
+        hashotp = request.form['hashed-otp']
+        if check_password_hash(hashotp , otp):
+            updatepwd(email , password)
+        else:
+            return jsonify(dict(status='is-danger'))
