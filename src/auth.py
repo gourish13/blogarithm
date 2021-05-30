@@ -95,8 +95,9 @@ def mailcheck(mode):
 
 
 def resetpwd():
-    email = request.args['email']
+    
     if request.method=="GET":
+        email = request.args['email']
         if is_registered(email):
             otp = genkey()
             send_email('reset password' , email , otp=otp)
