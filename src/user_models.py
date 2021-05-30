@@ -34,3 +34,8 @@ def get_user(email):
 # Checking Registration
 def is_registered(email):
     return db(db.users.email == email).count()
+
+#Update Password
+def updatepwd(email , pwd):
+    db(db.users.email==email).update(password=pwd)
+    db.commit
