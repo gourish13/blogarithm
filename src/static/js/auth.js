@@ -144,6 +144,45 @@ function showNext() {
 
 function sendresetotp()
 {
+	
+	email_element = document.getElementById("email");
+	email_error = document.getElementById("email-error"); 
+	
+	if(!email_element.checkValidity()){
+		
+	email_element.classList.add("has-background-warning");
+	email_error.classList.add("has-text-danger-dark"); 
+	email_error.innerText = "Invalid email" ; 
+	}
+	else{
+		
+		verify_url = "/auth/resend-password?email="+email_element.value; 
+		fetch(verify_url).then(res => res.json()).then(res=>{
+			
+			if(res.otp){
+				
+			document.getElementById("hashed-otp").value=res.otp;
+			showresetpage();
+			}
+			else{
+				
+			email_error.classList.add("has-text-danger-dark"); 
+			email_error.innerText = "EMAIL NOT REGISTERED" ; 
+			}
+			
+			
+		}).catch(console.log);
+	
+	}
+	
+}
+
+
+
+function showresetpage()
+{
+	
+	
 	document.getElementById("reset-otp").style.display = "block";
 	document.getElementById("newpassword").style.display = "block";
 	document.getElementById("confirmpassword").style.display = "block";
@@ -152,24 +191,81 @@ function sendresetotp()
 	document.getElementById("email").style.display = "none";
 	document.getElementById("send_otp").style.display = "none";
 	
+	
 }
+
+
 
 function enable()
 {
+	
 	document.getElementsByClassName("modal")[0].classList.add("is-active");
 	
+}
+
+function change_password()
+{
+	error_message = document.getElementById("email-error"); 
+	let form = document.forms[2] ; 
+	if(!form.reportValidity()){
+		error_message.classList.add("has-text-danger-dark"); 
+		error_message.innerText = "Please !!! Note all fields are filled" ;
+	} 
+	else{
+		
+		reset_otp = document.getElementById("reset-otp").value ; 
+		new_password = document.getElementById("newpassword").value ; 
+		confirm_password = document.getElementById("confirmpassword").value ;
+		if(new_password == confirm_password)
+		{
+			
+			error_message.classList.add("has-text-danger-dark"); 
+			error_message.innerText = "Password did not match" ;
+		} 
+		else{
+			
+		alert("Form submitted"); 	
+			
+		}
+		
+		
+			
+		
+		
+		
+	}
+		
+		
 }
 
 
 function disable()
 {
 	
-	document.getElementById("reset-otp").style.display = "none";
-	document.getElementById("newpassword").style.display = "none";
-	document.getElementById("confirmpassword").style.display = "none";
+	email_element = document.getElementById("email");
+	email_error = document.getElementById("email-error"); 
+	reset_otp = document.getElementById("reset-otp") ; 
+	new_password_field = document.getElementById("newpassword") ; 
+	confirm_password_field = document.getElementById("confirmpassword") ; 
+	
+	email_element.classList.remove("has-background-warning");
+	email_error.classList.remove("has-text-danger-dark"); 
+	email_error.innerText = "" ;  
+	
+	email_element.value = "" ; 
+	reset_otp.value = "" ; 
+	new_password_field.value = ""; 
+	confirm_password_field.value = ""; 
+	
+	
+	
+	reset_otp.style.display = "none";
+	new_password_field.style.display = "none";
+	confirm_password_field.style.display = "none";
 	document.getElementById("save").style.display = "none";
 	
-	document.getElementById("email").style.display = "block";
+	
+	email_element.style.display = "block";
 	document.getElementById("send_otp").style.display = "block";
 	document.getElementById("send_otp").style.display = "block";
 	

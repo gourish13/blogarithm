@@ -150,46 +150,50 @@
 							<button class="delete" aria-label="close" onclick="disable()" ></button>
 						</header>
 						
-						<section class="modal-card-body">
-								<div class="field">
-									<div class="control">
-										<input type="email"  id="email" name="email" required class="input" placeholder="Enter your registered email id">
+						<form> 
+							<section class="modal-card-body">
+							
+									<div class="field">
+										<div class="control">
+											<p id="email-error" style="font-weight : bold;"></p>
+											<input type="email"  id="email" name="email" required class="input" placeholder="Enter your registered email id">
+										</div>
 									</div>
-								</div>
-								
-								
-								<button class="button is-success" id="send_otp" onclick="sendresetotp()">SEND OTP</button> 
-								
-								
-								<div class="field">
-									<div class="control">
-										<input type="text" id="reset-otp" required class="input" placeholder="Enter OTP" style="display :none;">
+									
+									
+									<button class="button is-success" id="send_otp" onclick="sendresetotp()">SEND OTP</button> 
+									
+									
+									<div class="field">
+										<div class="control">
+											<input type="text" id="reset-otp" name="resetotp" required class="input" placeholder="Enter OTP" style="display :none;">
+										</div>
 									</div>
-								</div>
-								
-								<div class="field">
-									<div class="control">
-										<input type="hidden" >
+									
+									<div class="field">
+										<div class="control">
+											<input type="hidden" name="hashed-otp" value="" />
+										</div>
+									</div> 
+									
+									<div class="field">
+										<div class="control">
+											<input type="password" id="newpassword" name="newpassword" required class="input" placeholder="Enter new password" style="display :none;">
+										</div>
 									</div>
-								</div> 
-								
-								<div class="field">
-									<div class="control">
-										<input type="password" id="newpassword" name="password" required class="input" placeholder="Enter new password" style="display :none;">
+									
+									<div class="field">
+										<div class="control">
+											<input type="password" id="confirmpassword" required class="input" placeholder="Confirm password" style="display :none;">
+										</div>
 									</div>
-								</div>
-								
-								<div class="field">
-									<div class="control">
-										<input type="password" id="confirmpassword" required class="input" placeholder="Confirm password" style="display :none;">
-									</div>
-								</div>
-								
-						</section>
-					
-						<footer class="modal-card-foot">
-							<button class="button is-success" id="save" style="display :none;">Save</button>
-						</footer>
+									
+							</section>
+						
+							<footer class="modal-card-foot">
+								<button class="button is-success" id="save" style="display :none;" onclick="change_password()" >Save</button>
+							</footer>
+						</form>
 						
 					</div>
 				</div>
